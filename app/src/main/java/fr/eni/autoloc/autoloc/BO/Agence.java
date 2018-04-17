@@ -3,9 +3,9 @@ package fr.eni.autoloc.autoloc.BO;
 import java.util.List;
 
 public class Agence {
-    private  int id;
-    private  String nom;
-    private  Adresse adresse;
+    private int id;
+    private String nom;
+    private Adresse adresse;
     private List<Vehicule> vehicules;
     private List<Agent> agents;
 
