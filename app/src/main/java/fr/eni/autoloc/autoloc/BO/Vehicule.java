@@ -11,12 +11,13 @@ public class Vehicule {
     private EtatVehicule etatVehicule;
     private double prix;
     private Boolean disponibilite;
+    private String immatriculation;
 
     public Vehicule() {
 
     }
 
-    public Vehicule(Model model, int puissance, Agence agence, List<Img> listPhotos, EtatVehicule etatVehicule, double prix, Boolean disponibilite) {
+    public Vehicule(Model model, int puissance, Agence agence, List<Img> listPhotos, EtatVehicule etatVehicule, double prix, Boolean disponibilite, String immatriculation) {
         this.model = model;
         this.puissance = puissance;
         this.agence = agence;
@@ -24,9 +25,10 @@ public class Vehicule {
         this.etatVehicule = etatVehicule;
         this.prix = prix;
         this.disponibilite = disponibilite;
+        this.immatriculation = immatriculation;
     }
 
-    public Vehicule(int id, Model model, int puissance, Agence agence, List<Img> listPhotos, EtatVehicule etatVehicule, double prix, Boolean disponibilite) {
+    public Vehicule(int id, Model model, int puissance, Agence agence, List<Img> listPhotos, EtatVehicule etatVehicule, double prix, Boolean disponibilite, String immatriculation) {
         this.id = id;
         this.model = model;
         this.puissance = puissance;
@@ -35,6 +37,7 @@ public class Vehicule {
         this.etatVehicule = etatVehicule;
         this.prix = prix;
         this.disponibilite = disponibilite;
+        this.immatriculation = immatriculation;
     }
 
     public int getId() {
@@ -101,6 +104,14 @@ public class Vehicule {
         this.disponibilite = disponibilite;
     }
 
+    public String getImmatriculation() {
+        return immatriculation;
+    }
+
+    public void setImmatriculation(String immatriculation) {
+        this.immatriculation = immatriculation;
+    }
+
     @Override
     public String toString() {
         return "Vehicule{" +
@@ -112,6 +123,7 @@ public class Vehicule {
                 ", etatVehicule=" + etatVehicule +
                 ", prix=" + prix +
                 ", disponibilite=" + disponibilite +
+                ", immatriculation='" + immatriculation + '\'' +
                 '}';
     }
 }
