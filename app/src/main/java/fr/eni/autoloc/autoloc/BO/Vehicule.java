@@ -3,14 +3,14 @@ package fr.eni.autoloc.autoloc.BO;
 import java.util.List;
 
 public class Vehicule {
-    private  int id;
-    private  Model model;
-    private  int puissance;
-    private  Agence agence;
+    private int id;
+    private Model model;
+    private int puissance;
+    private Agence agence;
     private List<Img> listPhotos;
     private EtatVehicule etatVehicule;
     private double prix;
-    private  Boolean disponibilite;
+    private Boolean disponibilite;
 
     public Vehicule() {
 

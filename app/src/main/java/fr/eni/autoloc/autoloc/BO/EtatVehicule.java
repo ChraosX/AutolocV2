@@ -5,8 +5,8 @@ import android.view.Display;
 import java.util.List;
 
 public class EtatVehicule {
-    private  int id;
-    private  String nom;
+    private int id;
+    private String nom;
 
     public EtatVehicule() {
     }

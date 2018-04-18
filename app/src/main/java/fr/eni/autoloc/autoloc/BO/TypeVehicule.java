@@ -2,7 +2,7 @@ package fr.eni.autoloc.autoloc.BO;
 
 public class TypeVehicule {
     private int id;
-    private  String nom;
+    private String nom;
 
     public TypeVehicule() {
     }

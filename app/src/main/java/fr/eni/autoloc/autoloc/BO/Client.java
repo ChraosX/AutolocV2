@@ -6,6 +6,7 @@ public class Client extends Personne {
 
     private Adresse adress;
     private List<Location> locations;
+
     public Client() {
     }
 

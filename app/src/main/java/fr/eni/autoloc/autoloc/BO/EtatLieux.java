@@ -3,10 +3,10 @@ package fr.eni.autoloc.autoloc.BO;
 import java.util.List;
 
 public class EtatLieux {
-        private  int id;
-        private  Location location;
-        private  EtatVehicule etatDebut;
-        private  EtatVehicule etatFin;
+        private int id;
+        private Location location;
+        private EtatVehicule etatDebut;
+        private EtatVehicule etatFin;
         private String descriptionEDebut;
         private String descriptionEFin;
         private List<Img> listImgDebut;

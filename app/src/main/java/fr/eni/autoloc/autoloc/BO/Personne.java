@@ -2,9 +2,9 @@ package fr.eni.autoloc.autoloc.BO;
 
 public abstract class Personne {
 
-    private  int id;
-    private  String nom;
-    private  String prenom;
+    private int id;
+    private String nom;
+    private String prenom;
     private String sexe;
     private String email;
     private String tel;
