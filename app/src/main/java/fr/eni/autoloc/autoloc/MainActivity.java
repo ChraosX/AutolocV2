@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Boolean memoriser = ((CheckBox) findViewById(R.id.ck_memoriser)).isChecked();
 
         //TODO ajouter la méthode de vérification dans la bdd
-        if ( /* il y a nu resultat */) {
+        if ( /*il y a un resultat */) {
             if (memoriser) {
                 setSessionInfo(agentId, agentMdp, agence);
             }

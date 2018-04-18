@@ -106,7 +106,7 @@ public class DetailFragment extends Fragment {
         TextView disponibilite = getView().findViewById(R.id.txt_disponibilite);
         ImageView photo = getView().findViewById(R.id.photo);
 
-        immatriculation.setText(vehicule.getImmatriculation);
+        immatriculation.setText(vehicule.getImmatriculation());
         marque.setText(vehicule.getModel().getMarque().getNom());
         modele.setText(vehicule.getModel().getNom());
         type.setText(vehicule.getModel().getType().getNom());
