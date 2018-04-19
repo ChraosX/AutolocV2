@@ -146,6 +146,37 @@ public class DBManager {
 
     }
 
+    public List<Vehicule> getAllVehicule(){
+        List<Vehicule> result = new ArrayList<Vehicule>();
+
+        for(VehiculeEntity ve : db.vehiculeDAO().selectAll()){
+            result.add(ve.toBo());
+
+        }
+
+        return result;
+    }
+
+    public List<Marque> getAllMarque(){
+        List<Marque> result = new ArrayList<Marque>();
+
+        for(MarqueEntity m : db.marqueDAO().selectAll()){
+            Marque mm = m.toBo();
+            result.add(mm);
+        }
+
+        return  result;
+    }
+
+    public boolean connexion(String email, String mdp ){
+        Agent a = db.agentDAO().connection(email,mdp);
+        if( a!=null && a.getId()>0){
+            return true;
+        }
+        return false;
+
+    }
+
 
    public  void saveVehicule( Vehicule v){
         if(v.getId()==0) {

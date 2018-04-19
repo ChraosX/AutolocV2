@@ -1,6 +1,8 @@
 package fr.eni.autoloc.autoloc.activity.fragment;
 
+import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -10,7 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
+import fr.eni.autoloc.autoloc.BLL.DBManager;
+import fr.eni.autoloc.autoloc.BO.Agence;
 import fr.eni.autoloc.autoloc.BO.Vehicule;
+import fr.eni.autoloc.autoloc.MainActivity;
 import fr.eni.autoloc.autoloc.R;
 import fr.eni.autoloc.autoloc.adapter.MyParkingRecyclerViewAdapter;
 
@@ -69,8 +76,13 @@ public class ParkingFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
+            DBManager db = DBManager.getInstance(this.getContext());
+            Agence a = new Agence();
+
+            SharedPreferences pref = getContext().getSharedPreferences(MainActivity.SESSION,Context.MODE_PRIVATE);
+
             //TODO Récuperer la lsite correspondante avec les valeurs de sessoin dans sharedpreference
-            recyclerView.setAdapter(new MyParkingRecyclerViewAdapter( MA LISTE DE VEHICULE EN FONCTION DE L AGENCE  , mListener));
+            recyclerView.setAdapter(new MyParkingRecyclerViewAdapter( agenceList  , mListener));
         }
         return view;
     }
