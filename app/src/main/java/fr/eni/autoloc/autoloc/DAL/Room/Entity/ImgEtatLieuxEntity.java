@@ -12,6 +12,8 @@ import android.arch.persistence.room.ForeignKey;
 public class ImgEtatLieuxEntity {
     @ColumnInfo(name = "etat_lieux_id")
     public int etatLieuxId;
+    @ColumnInfo(name = "location_id")
+    public int locationId;
     @ColumnInfo(name = "img_id")
     public int imgId;
 

@@ -15,17 +15,18 @@ import fr.eni.autoloc.autoloc.BO.Location;
         @ForeignKey(entity = EtatVehiculeEntity.class,parentColumns = "id",childColumns = "etat_debut_id"),
         @ForeignKey(entity = EtatVehiculeEntity.class,parentColumns = "id",childColumns = "etat_fin_id"),
         @ForeignKey(entity = LocationEntity.class,parentColumns = "id",childColumns = "location_id",onDelete = ForeignKey.CASCADE,onUpdate = ForeignKey.CASCADE)
-        })
+
+},primaryKeys = {"location_id","id"})
 
 public class EtatLieuxEntity implements ParsableToBo<EtatLieux>{
     @PrimaryKey(autoGenerate = true)
-    private  int id;
+    public  int id;
     @ColumnInfo(name = "location_id")
     public int locationId;
     @ColumnInfo(name = "etat_debut_id")
     public int etatDebut;
     @ColumnInfo(name = "etat_fin_id")
-    private  int etatFin;
+    public  int etatFin;
     public String descriptionEDebut;
     public String descriptionEFin;
 

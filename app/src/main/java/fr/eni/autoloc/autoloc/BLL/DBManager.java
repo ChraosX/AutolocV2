@@ -177,6 +177,14 @@ public class DBManager {
 
     }
 
+    List<Vehicule> getVehiculeByAgence( int idAgence){
+        List<Vehicule> result = new ArrayList<Vehicule>() ;
+        for(VehiculeEntity ve : db.vehiculeDAO().selectByAgence(idAgence)) {
+            Vehicule v = ve.toBo();
+            result.add(v);
+        }
+        return result;
+    }
 
    public  void saveVehicule( Vehicule v){
         if(v.getId()==0) {
@@ -224,6 +232,7 @@ public class DBManager {
            db.typeVehiculeDAO().update(toTypeVehiculeEntity(t));
        }
    }
+
 
    public void saveImg(Img i){
        if(i.getId()==0) {

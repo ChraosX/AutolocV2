@@ -10,7 +10,7 @@ import fr.eni.autoloc.autoloc.BO.Marque;
 import fr.eni.autoloc.autoloc.BO.Model;
 import fr.eni.autoloc.autoloc.BO.TypeVehicule;
 
-@Entity(tableName = "moddel",primaryKeys = {"marque_id","type_id","id"},
+@Entity(tableName = "moddel",primaryKeys = { "marque_id","type_id","id"},
         foreignKeys = { @ForeignKey(entity = ImgEntity.class , parentColumns = "id",childColumns = "img_id",onDelete = ForeignKey.SET_NULL,onUpdate = ForeignKey.CASCADE),
                         @ForeignKey(entity = MarqueEntity.class , parentColumns = "id",childColumns = "marque_id",onUpdate = ForeignKey.CASCADE,onDelete = ForeignKey.CASCADE),
                         @ForeignKey(entity = TypeVehiculeEntity.class , parentColumns = "id",childColumns = "type_id",onDelete = ForeignKey.NO_ACTION,onUpdate = ForeignKey.CASCADE)})

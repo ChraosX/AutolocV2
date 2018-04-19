@@ -20,6 +20,7 @@ import fr.eni.autoloc.autoloc.BO.Vehicule;
 import fr.eni.autoloc.autoloc.MainActivity;
 import fr.eni.autoloc.autoloc.R;
 import fr.eni.autoloc.autoloc.adapter.MyParkingRecyclerViewAdapter;
+import fr.eni.autoloc.autoloc.util.Constante;
 
 /**
  * A fragment representing a list of Items.
@@ -77,12 +78,16 @@ public class ParkingFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
             DBManager db = DBManager.getInstance(this.getContext());
+
             Agence a = new Agence();
 
-            SharedPreferences pref = getContext().getSharedPreferences(MainActivity.SESSION,Context.MODE_PRIVATE);
-
+            SharedPreferences pref = getContext().getSharedPreferences(Constante.SESSION,Context.MODE_PRIVATE);
+            a.setId(pref.getInt(Constante.AGENCE_ID,0));
+            a.setNom(pref.getString(Constante.AGENCE_NOM,""));
+            db.loadVehiculeAgence(a);
             //TODO Récuperer la lsite correspondante avec les valeurs de sessoin dans sharedpreference
-            recyclerView.setAdapter(new MyParkingRecyclerViewAdapter( agenceList  , mListener));
+            recyclerView.setAdapter(new MyParkingRecyclerViewAdapter( a.getVehicules()  , mListener));
+
         }
         return view;
     }

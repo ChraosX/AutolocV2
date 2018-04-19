@@ -2,7 +2,7 @@ package fr.eni.autoloc.autoloc.BO;
 
 public class Adresse {
 
-    private int id;
+
     private String codePostal;
     private String ville;
     private String rue;
@@ -12,28 +12,15 @@ public class Adresse {
     }
 
     public Adresse( String codePostal, String ville, String rue, int numRue) {
-        this.id = id;
+
         this.codePostal = codePostal;
         this.ville = ville;
         this.rue = rue;
         this.numRue = numRue;
     }
 
-    public Adresse(int id, String codePostal, String ville, String rue, int numRue) {
-        this.id = id;
-        this.codePostal = codePostal;
-        this.ville = ville;
-        this.rue = rue;
-        this.numRue = numRue;
-    }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getCodePostal() {
         return codePostal;
@@ -71,7 +58,7 @@ public class Adresse {
     @Override
     public String toString() {
         return "Adresse{" +
-                "id=" + id +
+
                 ", codePostal='" + codePostal + '\'' +
                 ", ville='" + ville + '\'' +
                 ", rue='" + rue + '\'' +
@@ -87,8 +74,7 @@ public class Adresse {
         if (!(adresse instanceof Adresse))
             return false;
 
-        if (this.id != ((Adresse) adresse).getId()
-                || !this.codePostal.equals(((Adresse) adresse).getCodePostal())
+        if (!this.codePostal.equals(((Adresse) adresse).getCodePostal())
                 || !this.ville.equals(((Adresse) adresse).getVille())
                 || !this.rue.equals(((Adresse) adresse).getRue())
                 || this.numRue != ((Adresse) adresse).getNumRue())
