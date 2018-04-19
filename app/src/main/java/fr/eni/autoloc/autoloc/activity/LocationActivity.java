@@ -15,7 +15,7 @@ public class LocationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
 
-        ImageButton previous = findViewById(R.id.btn_previous);
+        /*ImageButton previous = findViewById(R.id.btn_previous);
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -31,6 +31,6 @@ public class LocationActivity extends AppCompatActivity {
                 ImageView photo = findViewById(R.id.photo);
                 photo.setImageURI();
             }
-        });
+        });*/
     }
 }

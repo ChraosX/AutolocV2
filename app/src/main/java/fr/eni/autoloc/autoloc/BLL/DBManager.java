@@ -44,10 +44,6 @@ public class DBManager {
         return instance;
     }
 
-
-
-
-
     private DBManager(Context c   ){
         db= Room.databaseBuilder(c,
                 AutolocDatabase.class, AutolocDatabase.DB_NAME)
@@ -58,7 +54,6 @@ public class DBManager {
     public List<Agence> getAll(){
 
         ParserList<Agence> p = new ParserList<Agence>();
-
 
         List<? extends ParsableToBo<Agence>> mm = db.agenceDAO().selectAll();
 
@@ -81,7 +76,6 @@ public class DBManager {
 
         for ( Vehicule v:a.getVehicules()) {
             saveVehicule(v);
-
         }
 
     }
@@ -139,7 +133,6 @@ public class DBManager {
         me.nom = m.getNom();
 
         return me;
-
     }
 
     public static TypeVehiculeEntity toTypeVehiculeEntity(TypeVehicule t){
@@ -159,9 +152,7 @@ public class DBManager {
             if (v.getModel().getId() == 0) {
                 if (v.getModel().getMarque().getId() == 0) {
                     saveMarque(v.getModel().getMarque());
-
                 }
-
                     saveType(v.getModel().getType());
 
                 if (v.getModel().getImg() == null) {
@@ -169,7 +160,6 @@ public class DBManager {
                 } else  {
                     saveImg(v.getModel().getImg());
                 }
-
 
                 saveModel(v.getModel());
                 v.setId(db.vehiculeDAO().insert(toVehiculeEntity(v)));
@@ -181,7 +171,6 @@ public class DBManager {
                         saveImg(i);
                     }
                     saveImgVehicule(i, v);
-
                 }
             }
         }else{
@@ -203,7 +192,6 @@ public class DBManager {
        }else if(t.equals(db.marqueDAO().findById(t.getId()).toBo())){
            db.typeVehiculeDAO().update(toTypeVehiculeEntity(t));
        }
-
    }
 
    public void saveImg(Img i){
@@ -212,7 +200,6 @@ public class DBManager {
        }else if(i.equals(db.marqueDAO().findById(i.getId()).toBo())){
            db.imgDAO().update(toImgEntity(i));
        }
-
    }
 
    public void saveModel(Model m){
@@ -295,8 +282,6 @@ public class DBManager {
                 db.PersonneDAO().update(toPersonneEntity(a));
                 db.agentDAO().update(toAgentEntity(a));
             }
-
-
         }
     }
 
@@ -318,7 +303,6 @@ public class DBManager {
                 db.PersonneDAO().update(toPersonneEntity(c));
                 db.clientDAO().update(toClientEntity(c));
             }
-
         }
     }
 
@@ -344,7 +328,6 @@ public class DBManager {
         }else{
             db.PersonneDAO().update(p);
         }
-
     }
 
     public PersonneEntity toPersonneEntity(Personne p){
@@ -359,9 +342,4 @@ public class DBManager {
 
         return  pe ;
     }
-    
-
-
-
-
 }

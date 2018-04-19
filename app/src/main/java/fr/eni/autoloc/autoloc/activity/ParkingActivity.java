@@ -32,7 +32,6 @@ public class ParkingActivity extends AppCompatActivity implements ParkingFragmen
         }
         else {
             Intent intent = new Intent(ParkingActivity.this, DetailActivity.class);
-            //TODO Attendre la modification de la BO : Parcelable
             intent.putExtra("vehicule", vehicule);
             startActivity(intent);
         }

@@ -17,18 +17,20 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
+import fr.eni.autoloc.autoloc.BLL.DBManager;
+import fr.eni.autoloc.autoloc.BO.Agence;
 import fr.eni.autoloc.autoloc.activity.ParkingActivity;
+import fr.eni.autoloc.autoloc.util.Constante;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    public static final String SESSION = "SESSION";
-    private static final String AGENT_ID = "AGENT_ID";
-    private static final String AGENT_MDP = "AGENT_MDP";
-    private static final String AGENCE = "AGENCE";
+    private DBManager dbManager;
 
     private String agentId;
     private String agentMdp;
-    private String agence;
+    private Agence agence;
 
     private SharedPreferences sharedPreferences;
 
@@ -44,12 +46,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
 
         // Récupérer la liste des agences
-        //TODO Recuperer la lsite des agences
+        List<Agence> agenceList = dbManager.getAllAgence();
+
 
         // Remplir le spinner des agences
         Spinner spinner = findViewById(R.id.spinner_agence);
         //TODO Inserer la liste esous forme de table de charSequence
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.agences_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<Agence> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, agenceList);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
@@ -59,57 +62,61 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         //Récupérer les informations de la précédente connexion
         getSessionInfo();
         //Initialiser les champs avec les infos de la dernière connexion
-        ((EditText)findViewById(R.id.edit_id)).setText(agentId);
-        ((EditText)findViewById(R.id.edit_mdp)).setText(agentMdp);
-        ((Spinner)findViewById(R.id.spinner_agence)).setSelection(adapter.getPosition(agence));
+        ((EditText) findViewById(R.id.edit_id)).setText(agentId);
+        ((EditText) findViewById(R.id.edit_mdp)).setText(agentMdp);
+        if (agence.getId() > 0) {
+            ((Spinner) findViewById(R.id.spinner_agence)).setSelection(adapter.getPosition(agence));
+        }
     }
 
     private void getSessionInfo() {
 
-        sharedPreferences = getBaseContext().getSharedPreferences(SESSION,MODE_PRIVATE);
+        sharedPreferences = getBaseContext().getSharedPreferences(Constante.SESSION, MODE_PRIVATE);
 
-        agentId = sharedPreferences.getString(AGENT_ID,"");
-        agentMdp = sharedPreferences.getString(AGENT_MDP,"");
-        agence = sharedPreferences.getString(AGENCE, "");
+        agentId = sharedPreferences.getString(Constante.AGENT_ID, "");
+        agentMdp = sharedPreferences.getString(Constante.AGENT_MDP, "");
+        agence.setId(sharedPreferences.getInt(Constante.AGENCE_ID, -1));
+        agence.setNom(sharedPreferences.getString(Constante.AGENCE_NOM, ""));
     }
 
-    private void setSessionInfo(String id ,String mdp, String agence) {
+    private void setSessionInfo(String id, String mdp, int agence_id, String agence_nom) {
 
-        sharedPreferences = getBaseContext().getSharedPreferences(SESSION, MODE_PRIVATE);
+        sharedPreferences = getBaseContext().getSharedPreferences(Constante.SESSION, MODE_PRIVATE);
 
         sharedPreferences.edit()
-                .putString(AGENT_ID, id)
-                .putString(AGENT_MDP, mdp)
-                .putString(AGENCE, agence)
+                .putString(Constante.AGENT_ID, id)
+                .putString(Constante.AGENT_MDP, mdp)
+                .putInt(Constante.AGENT_ID, agence_id)
+                .putString(Constante.AGENCE_NOM, agence_nom)
                 .apply();
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        agence = (String) parent.getItemAtPosition(position);
+        agence = (Agence) parent.getItemAtPosition(position);
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> parent) { }
+    public void onNothingSelected(AdapterView<?> parent) {
+    }
 
     public void seConnecter(View view) {
 
         agentId = String.valueOf(((EditText) findViewById(R.id.edit_id)).getText());
         agentMdp = String.valueOf(((EditText) findViewById(R.id.edit_mdp)).getText());
-        agence = String.valueOf(((Spinner) findViewById(R.id.spinner_agence)).getSelectedItem());
+        agence = (Agence) ((Spinner) findViewById(R.id.spinner_agence)).getSelectedItem();
         Boolean memoriser = ((CheckBox) findViewById(R.id.ck_memoriser)).isChecked();
 
         //TODO ajouter la méthode de vérification dans la bdd
-        if ( /*il y a un resultat */) {
+        if (/**/) {
             if (memoriser) {
-                setSessionInfo(agentId, agentMdp, agence);
+                setSessionInfo(agentId, agentMdp, agence.getId(), agence.getNom());
             }
 
             Intent intent = new Intent(MainActivity.this, ParkingActivity.class);
 
             startActivity(intent);
-        }
-        else {
+        } else {
             LayoutInflater inflater = getLayoutInflater();
             View layout = inflater.inflate(R.layout.custom_toast_auth_refuse,
                     (ViewGroup) findViewById(R.id.custom_toast_auth_refuse));
