@@ -1,8 +1,12 @@
 package fr.eni.autoloc.autoloc.BO;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.support.annotation.NonNull;
+
 import java.util.List;
 
-public class Vehicule {
+public class Vehicule implements Parcelable{
     private  int id;
     private  Model model;
     private  int puissance;
@@ -39,6 +43,27 @@ public class Vehicule {
         this.disponibilite = disponibilite;
         this.immatriculation = immatriculation;
     }
+
+    protected Vehicule(Parcel in) {
+        id = in.readInt();
+        puissance = in.readInt();
+        prix = in.readDouble();
+        byte tmpDisponibilite = in.readByte();
+        disponibilite = tmpDisponibilite == 0 ? null : tmpDisponibilite == 1;
+        immatriculation = in.readString();
+    }
+
+    public static final Creator<Vehicule> CREATOR = new Creator<Vehicule>() {
+        @Override
+        public Vehicule createFromParcel(Parcel in) {
+            return new Vehicule(in);
+        }
+
+        @Override
+        public Vehicule[] newArray(int size) {
+            return new Vehicule[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -126,4 +151,19 @@ public class Vehicule {
                 ", immatriculation='" + immatriculation + '\'' +
                 '}';
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.id);
+        dest.writeInt(this.id);
+        dest.writeInt(this.id);
+        dest.writeInt(this.id);
+
+    }
+
 }
