@@ -78,4 +78,22 @@ public class Adresse {
                 ", numRue=" + numRue +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object adresse) {
+        if (adresse == null)
+            return false;
+
+        if (!(adresse instanceof Adresse))
+            return false;
+
+        if (this.id != ((Adresse) adresse).getId()
+                || !this.codePostal.equals(((Adresse) adresse).getCodePostal())
+                || !this.ville.equals(((Adresse) adresse).getVille())
+                || !this.rue.equals(((Adresse) adresse).getRue())
+                || this.numRue != ((Adresse) adresse).getNumRue())
+            return false;
+
+        return true;
+    }
 }

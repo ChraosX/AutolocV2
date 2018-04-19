@@ -43,4 +43,20 @@ public class Agent extends Personne{
                 ", passwd='" + passwd + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object agent) {
+
+        if (agent == null)
+            return false;
+
+        if (!(agent instanceof Agent))
+            return false;
+
+        if (this.agence.getId() != ((Agent) agent).getAgence().getId()
+                || !this.passwd.equals(((Agent) agent).getPasswd()))
+            return false;
+
+        return true;
+    }
 }
