@@ -39,4 +39,20 @@ public class Marque {
                 ", nom='" + nom + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object marque) {
+
+        if (marque == null)
+            return false;
+
+        if (!(marque instanceof Marque))
+            return false;
+
+        if (this.id != ((Marque) marque).getId()
+                || !this.nom.equals(((Marque) marque).getNom()))
+            return false;
+
+        return true;
+    }
 }

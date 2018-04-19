@@ -52,4 +52,21 @@ public class Img {
                 ", description='" + description + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object img) {
+
+        if (img == null)
+            return false;
+
+        if (!(img instanceof Img))
+            return false;
+
+        if (this.id != ((Img) img).getId()
+                || !this.path.equals(((Img) img).getPath())
+                || !this.description.equals(((Img) img).getDescription()))
+            return false;
+
+        return true;
+    }
 }

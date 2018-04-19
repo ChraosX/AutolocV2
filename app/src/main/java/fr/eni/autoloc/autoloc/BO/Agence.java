@@ -3,9 +3,9 @@ package fr.eni.autoloc.autoloc.BO;
 import java.util.List;
 
 public class Agence {
-    private  int id;
-    private  String nom;
-    private  Adresse adresse;
+    private int id;
+    private String nom;
+    private Adresse adresse;
     private List<Vehicule> vehicules;
     private List<Agent> agents;
 
@@ -89,5 +89,22 @@ public class Agence {
                 ", vehicules=" + vehicules +
                 ", agents=" + agents +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object agence) {
+
+        if (agence == null)
+            return false;
+
+        if (!(agence instanceof Agence))
+            return false;
+
+        if (this.id != ((Agence) agence).getId()
+                || !this.nom.equals(((Agence) agence).getNom())
+                || !this.adresse.equals(((Agence) agence).getAdresse()))
+            return false;
+
+        return true;
     }
 }

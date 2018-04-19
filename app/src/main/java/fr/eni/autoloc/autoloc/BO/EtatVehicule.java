@@ -1,9 +1,5 @@
 package fr.eni.autoloc.autoloc.BO;
 
-import android.view.Display;
-
-import java.util.List;
-
 public class EtatVehicule {
     private  int id;
     private  String nom;
@@ -42,5 +38,21 @@ public class EtatVehicule {
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object etatVehicule) {
+
+        if (etatVehicule == null)
+            return false;
+
+        if (!(etatVehicule instanceof EtatVehicule))
+            return false;
+
+        if (this.id != ((EtatVehicule) etatVehicule).getId()
+                || !this.nom.equals(((EtatVehicule) etatVehicule).getNom()))
+            return false;
+
+        return true;
     }
 }
