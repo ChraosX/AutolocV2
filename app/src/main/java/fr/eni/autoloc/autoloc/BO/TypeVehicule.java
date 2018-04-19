@@ -1,5 +1,7 @@
 package fr.eni.autoloc.autoloc.BO;
 
+import java.lang.reflect.Type;
+
 public class TypeVehicule {
     private int id;
     private  String nom;
@@ -38,5 +40,21 @@ public class TypeVehicule {
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object typeVehicule) {
+
+        if (typeVehicule == null)
+            return false;
+
+        if (!(typeVehicule instanceof TypeVehicule))
+            return false;
+
+        if (this.id != ((TypeVehicule) typeVehicule).getId()
+                || !this.nom.equals(((TypeVehicule) typeVehicule).getNom()))
+            return false;
+
+        return true;
     }
 }

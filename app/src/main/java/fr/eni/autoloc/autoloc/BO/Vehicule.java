@@ -3,17 +3,16 @@ package fr.eni.autoloc.autoloc.BO;
 import java.util.List;
 
 public class Vehicule {
-    private  int id;
-    private  Model model;
-    private  int puissance;
-    private  Agence agence;
+    private int id;
+    private Model model;
+    private int puissance;
+    private Agence agence;
     private List<Img> listPhotos;
     private EtatVehicule etatVehicule;
     private double prix;
-    private  Boolean disponibilite;
+    private Boolean disponibilite;
 
     public Vehicule() {
-
     }
 
     public Vehicule(Model model, int puissance, Agence agence, List<Img> listPhotos, EtatVehicule etatVehicule, double prix, Boolean disponibilite) {
@@ -113,5 +112,26 @@ public class Vehicule {
                 ", prix=" + prix +
                 ", disponibilite=" + disponibilite +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object vehicule) {
+
+        if (vehicule == null)
+            return false;
+
+        if (!(vehicule instanceof Vehicule))
+            return false;
+
+        if (this.id != ((Vehicule) vehicule).getId()
+                || this.model.getId() != ((Vehicule) vehicule).getModel().getId()
+                || this.puissance != ((Vehicule) vehicule).getPuissance()
+                || this.agence.getId() != ((Vehicule) vehicule).getAgence().getId()
+                || this.etatVehicule.getId() != ((Vehicule) vehicule).getEtatVehicule().getId()
+                || this.prix != ((Vehicule) vehicule).getPrix()
+                || this.disponibilite != ((Vehicule) vehicule).getDisponibilite())
+            return false;
+
+        return true;
     }
 }
