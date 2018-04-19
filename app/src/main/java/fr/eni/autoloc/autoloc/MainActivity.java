@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        dbManager = DBManager.getInstance(MainActivity.this);
+
         // Cacher l'action bar
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -107,8 +109,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         agence = (Agence) ((Spinner) findViewById(R.id.spinner_agence)).getSelectedItem();
         Boolean memoriser = ((CheckBox) findViewById(R.id.ck_memoriser)).isChecked();
 
-        //TODO ajouter la méthode de vérification dans la bdd
-        if (/**/) {
+        if (dbManager.connexion(agentId, agentMdp)) {
             if (memoriser) {
                 setSessionInfo(agentId, agentMdp, agence.getId(), agence.getNom());
             }
