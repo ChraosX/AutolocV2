@@ -13,7 +13,7 @@ public class Location {
 
     public Location() {
     }
-
+//Modif
     public Location(Date dateDebut, Date dateFin, Vehicule vehicule, Client client, double prix, EtatLieux etatLieux) {
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
