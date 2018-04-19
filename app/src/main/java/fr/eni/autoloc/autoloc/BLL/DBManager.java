@@ -1,6 +1,9 @@
 package fr.eni.autoloc.autoloc.BLL;
 
 
+import android.arch.persistence.room.Room;
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,10 +35,10 @@ public class DBManager {
     private   AutolocDatabase db;
     private static DBManager instance;
 
-    public static DBManager getInstance(AutolocDatabase db) {
+    public static DBManager getInstance(Context c) {
 
         if(instance == null){
-            instance = new DBManager(db);
+            instance = new DBManager(c);
         }
 
         return instance;
@@ -45,8 +48,11 @@ public class DBManager {
 
 
 
-    private DBManager(AutolocDatabase dbe   ){
-        db= dbe;
+    private DBManager(Context c   ){
+        db= Room.databaseBuilder(c,
+                AutolocDatabase.class, AutolocDatabase.DB_NAME)
+                .fallbackToDestructiveMigration()
+                .build();
     }
 
     public List<Agence> getAll(){
@@ -285,10 +291,11 @@ public class DBManager {
             test.setSexe(p.sexe);
             test.setEmail(p.email);
 
-            if (!a.equals(test)){
+            if (!a.equals(test)) {
                 db.PersonneDAO().update(toPersonneEntity(a));
                 db.agentDAO().update(toAgentEntity(a));
             }
+
 
         }
     }
