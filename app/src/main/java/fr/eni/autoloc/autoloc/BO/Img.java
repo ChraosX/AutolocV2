@@ -1,9 +1,9 @@
 package fr.eni.autoloc.autoloc.BO;
 
 public class Img {
-    private  int id;
-    private  String path;
-    private  String description;
+    private int id;
+    private String path;
+    private String description;
 
     public Img() {
     }

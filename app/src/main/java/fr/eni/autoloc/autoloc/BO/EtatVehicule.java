@@ -1,8 +1,8 @@
 package fr.eni.autoloc.autoloc.BO;
 
 public class EtatVehicule {
-    private  int id;
-    private  String nom;
+    private int id;
+    private String nom;
 
     public EtatVehicule() {
     }

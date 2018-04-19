@@ -2,11 +2,11 @@ package fr.eni.autoloc.autoloc.BO;
 
 public class Adresse {
 
-    private  int id;
-    private  String codePostal;
-    private  String ville;
-    private  String rue;
-    private  int    numRue;
+    private int id;
+    private String codePostal;
+    private String ville;
+    private String rue;
+    private int    numRue;
 
     public Adresse() {
     }

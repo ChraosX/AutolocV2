@@ -18,6 +18,7 @@ public class Vehicule implements Parcelable{
     private String immatriculation;
 
     public Vehicule() {
+
     }
 
     public Vehicule(Model model, int puissance, Agence agence, List<Img> listPhotos, EtatVehicule etatVehicule, double prix, Boolean disponibilite, String immatriculation) {
@@ -42,27 +43,6 @@ public class Vehicule implements Parcelable{
         this.disponibilite = disponibilite;
         this.immatriculation = immatriculation;
     }
-
-    protected Vehicule(Parcel in) {
-        id = in.readInt();
-        puissance = in.readInt();
-        prix = in.readDouble();
-        byte tmpDisponibilite = in.readByte();
-        disponibilite = tmpDisponibilite == 0 ? null : tmpDisponibilite == 1;
-        immatriculation = in.readString();
-    }
-
-    public static final Creator<Vehicule> CREATOR = new Creator<Vehicule>() {
-        @Override
-        public Vehicule createFromParcel(Parcel in) {
-            return new Vehicule(in);
-        }
-
-        @Override
-        public Vehicule[] newArray(int size) {
-            return new Vehicule[size];
-        }
-    };
 
     public int getId() {
         return id;

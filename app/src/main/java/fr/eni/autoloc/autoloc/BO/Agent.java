@@ -1,8 +1,8 @@
 package fr.eni.autoloc.autoloc.BO;
 
 public class Agent extends Personne{
-    private  Agence agence;
-    private  String passwd;
+    private Agence agence;
+    private String passwd;
 
     public Agent(Agence a) {
         this.agence = a;

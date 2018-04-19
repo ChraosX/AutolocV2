@@ -1,11 +1,11 @@
 package fr.eni.autoloc.autoloc.BO;
 
 public class Model {
-    private  int id;
-    private  Marque marque;
-    private  TypeVehicule type;
-    private  String nom;
-    private  Img img;
+    private int id;
+    private Marque marque;
+    private TypeVehicule type;
+    private String nom;
+    private Img img;
 
     public Model() {
     }

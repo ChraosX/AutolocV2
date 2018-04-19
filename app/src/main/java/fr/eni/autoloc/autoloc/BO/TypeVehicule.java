@@ -4,7 +4,7 @@ import java.lang.reflect.Type;
 
 public class TypeVehicule {
     private int id;
-    private  String nom;
+    private String nom;
 
     public TypeVehicule() {
     }
