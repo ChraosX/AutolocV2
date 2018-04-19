@@ -318,7 +318,7 @@ public class DBManager {
     public ClientEntity toClientEntity(Client c){
 
         ClientEntity cl = new ClientEntity();
-        cl.adresse =  c.getAdress();
+        cl.adresse =  c.getAdresse();
         cl.personneId = c.getId();
         return cl;
     }

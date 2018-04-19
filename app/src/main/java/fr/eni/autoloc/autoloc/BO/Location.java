@@ -101,4 +101,25 @@ public class Location {
                 ", etatLieux=" + etatLieux +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object location) {
+
+        if (location == null)
+            return false;
+
+        if (!(location instanceof Location))
+            return false;
+
+        if (this.id != ((Location) location).getId()
+                || this.dateDebut.equals(((Location) location).getDateDebut())
+                || this.dateFin.equals(((Location) location).getDateFin())
+                || !this.vehicule.equals(((Location) location).getVehicule())
+                || this.client.getId() != ((Location) location).getClient().getId()
+                || this.prix != ((Location) location).getPrix()
+                || this.etatLieux.equals(((Location) location).getEtatLieux()))
+            return false;
+
+        return true;
+    }
 }
