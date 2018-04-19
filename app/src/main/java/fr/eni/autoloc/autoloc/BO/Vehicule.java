@@ -1,8 +1,12 @@
 package fr.eni.autoloc.autoloc.BO;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.support.annotation.NonNull;
+
 import java.util.List;
 
-public class Vehicule {
+public class Vehicule implements Parcelable{
     private int id;
     private Model model;
     private int puissance;
@@ -11,11 +15,12 @@ public class Vehicule {
     private EtatVehicule etatVehicule;
     private double prix;
     private Boolean disponibilite;
+    private String immatriculation;
 
     public Vehicule() {
     }
 
-    public Vehicule(Model model, int puissance, Agence agence, List<Img> listPhotos, EtatVehicule etatVehicule, double prix, Boolean disponibilite) {
+    public Vehicule(Model model, int puissance, Agence agence, List<Img> listPhotos, EtatVehicule etatVehicule, double prix, Boolean disponibilite, String immatriculation) {
         this.model = model;
         this.puissance = puissance;
         this.agence = agence;
@@ -23,9 +28,10 @@ public class Vehicule {
         this.etatVehicule = etatVehicule;
         this.prix = prix;
         this.disponibilite = disponibilite;
+        this.immatriculation = immatriculation;
     }
 
-    public Vehicule(int id, Model model, int puissance, Agence agence, List<Img> listPhotos, EtatVehicule etatVehicule, double prix, Boolean disponibilite) {
+    public Vehicule(int id, Model model, int puissance, Agence agence, List<Img> listPhotos, EtatVehicule etatVehicule, double prix, Boolean disponibilite, String immatriculation) {
         this.id = id;
         this.model = model;
         this.puissance = puissance;
@@ -34,7 +40,29 @@ public class Vehicule {
         this.etatVehicule = etatVehicule;
         this.prix = prix;
         this.disponibilite = disponibilite;
+        this.immatriculation = immatriculation;
     }
+
+    protected Vehicule(Parcel in) {
+        id = in.readInt();
+        puissance = in.readInt();
+        prix = in.readDouble();
+        byte tmpDisponibilite = in.readByte();
+        disponibilite = tmpDisponibilite == 0 ? null : tmpDisponibilite == 1;
+        immatriculation = in.readString();
+    }
+
+    public static final Creator<Vehicule> CREATOR = new Creator<Vehicule>() {
+        @Override
+        public Vehicule createFromParcel(Parcel in) {
+            return new Vehicule(in);
+        }
+
+        @Override
+        public Vehicule[] newArray(int size) {
+            return new Vehicule[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -100,6 +128,14 @@ public class Vehicule {
         this.disponibilite = disponibilite;
     }
 
+    public String getImmatriculation() {
+        return immatriculation;
+    }
+
+    public void setImmatriculation(String immatriculation) {
+        this.immatriculation = immatriculation;
+    }
+
     @Override
     public String toString() {
         return "Vehicule{" +
@@ -111,8 +147,24 @@ public class Vehicule {
                 ", etatVehicule=" + etatVehicule +
                 ", prix=" + prix +
                 ", disponibilite=" + disponibilite +
+                ", immatriculation='" + immatriculation + '\'' +
                 '}';
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.id);
+        dest.writeInt(this.id);
+        dest.writeInt(this.id);
+        dest.writeInt(this.id);
+
+    }
+
 
     @Override
     public boolean equals(Object vehicule) {
@@ -129,7 +181,8 @@ public class Vehicule {
                 || this.agence.getId() != ((Vehicule) vehicule).getAgence().getId()
                 || this.etatVehicule.getId() != ((Vehicule) vehicule).getEtatVehicule().getId()
                 || this.prix != ((Vehicule) vehicule).getPrix()
-                || this.disponibilite != ((Vehicule) vehicule).getDisponibilite())
+                || this.disponibilite != ((Vehicule) vehicule).getDisponibilite()
+                || !this.immatriculation.equals(((Vehicule) vehicule).getImmatriculation()))
             return false;
 
         return true;
