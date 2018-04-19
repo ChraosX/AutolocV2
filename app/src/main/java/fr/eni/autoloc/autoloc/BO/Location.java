@@ -112,12 +112,15 @@ public class Location {
             return false;
 
         if (this.id != ((Location) location).getId()
-                || this.dateDebut.equals(((Location) location).getDateDebut())
-                || this.dateFin.equals(((Location) location).getDateFin())
-                || !this.vehicule.equals(((Location) location).getVehicule())
+                || !this.dateDebut.equals(((Location) location).getDateDebut())
+                || !this.dateFin.equals(((Location) location).getDateFin())
+                || !(   this.vehicule.getId()==((Location)location).getVehicule().getId()
+                        && this.vehicule.getModel().getId()==((Location)location).getVehicule().getModel().getId()
+                        && this.vehicule.getModel().getType().getId()==((Location)location).getVehicule().getModel().getType().getId()
+                        &&this.vehicule.getModel().getMarque().getId()==((Location)location).getVehicule().getModel().getMarque().getId())
                 || this.client.getId() != ((Location) location).getClient().getId()
                 || this.prix != ((Location) location).getPrix()
-                || this.etatLieux.equals(((Location) location).getEtatLieux()))
+                || !this.etatLieux.equals(((Location) location).getEtatLieux()))
             return false;
 
         return true;
