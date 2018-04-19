@@ -95,8 +95,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
-                android:src="@android:drawable/ic_media_previous"
-                android:onClick="photoPrecedente"/>
+                android:src="@android:drawable/ic_media_previous"/>
 
             <ImageView
                 android:id="@+id/photo"
@@ -111,8 +110,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
-                android:src="@android:drawable/ic_media_next"
-                android:onClick="photoSuivante"/>
+                android:src="@android:drawable/ic_media_next"/>
 
         </LinearLayout>
 
