@@ -17,11 +17,12 @@
     <string name="se_souvenir_du_mot_de_passe">Se souvenir du mot de passe.</string>
     <string name="disponible">Disponible</string>
     <string name="indisponible">Indisponible</string>
-    <string name="selectionner_un_client">Selectionner un client</string>
+    <string name="selectionner_un_client">Selectionner un client : </string>
     <string name="location_du">Location du :</string>
     <string name="au">Au</string>
     <string name="etat_des_lieux_avant_location">Etat des lieux avant location :</string>
     <string name="annuler">Annuler</string>
     <string name="terminer">Terminer</string>
+    <string name="btn_choisir_date">choisir</string>
 
 </resources>

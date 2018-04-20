@@ -20,7 +20,11 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingStart="20dp"
+                android:paddingRight="10dp"
+                android:paddingEnd="10dp">
 
                 <TextView
                     android:id="@+id/txt_immatriculation"
@@ -64,6 +68,7 @@
                     android:id="@+id/photo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
                     android:src="@android:drawable/ic_menu_gallery" />
             </LinearLayout>
 
@@ -73,18 +78,25 @@
             android:id="@+id/txt_selection_client"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
             android:text="@string/selectionner_un_client" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingStart="20dp"
+            android:paddingRight="20dp"
+            android:paddingEnd="20dp">
 
             <Spinner
                 android:id="@+id/spinner_client"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.7" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"/>
 
             <Button
                 android:id="@+id/btn_ajout_client"
@@ -98,33 +110,42 @@
             android:id="@+id/txt_selection_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingStart="20dp"
+            android:paddingRight="10dp"
+            android:paddingEnd="10dp"
             android:text="@string/location_du" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingStart="15dp"
+            android:paddingRight="15dp"
+            android:paddingEnd="15dp">
 
-            <DatePicker
-                android:id="@+id/date_picker_debut"
+            <Button
+                android:id="@+id/btn_set_date_debut"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.4"
-                android:datePickerMode="spinner" />
+                android:text="@string/btn_choisir_date"/>
 
             <TextView
                 android:id="@+id/txt_date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
-                android:text="@string/au" />
+                android:text="@string/au"
+                android:textAlignment="center"/>
 
-            <DatePicker
-                android:id="@+id/date_picker_fin"
+            <Button
+                android:id="@+id/btn_set_date_fin"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.4"
-                android:datePickerMode="spinner" />
+                android:text="@string/btn_choisir_date"/>
 
         </LinearLayout>
 
@@ -132,6 +153,10 @@
             android:id="@+id/txt_etat_des_lieux"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingStart="20dp"
+            android:paddingRight="10dp"
+            android:paddingEnd="10dp"
             android:text="@string/etat_des_lieux_avant_location" />
 
         <LinearLayout
@@ -187,7 +212,8 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginEnd="5dp"
-                android:text="@string/annuler"/>
+                android:text="@string/annuler"
+                android:onClick="annulerLocation"/>
 
             <Button
                 android:id="@+id/btn_terminer"
@@ -198,7 +224,8 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginEnd="5dp"
-                android:text="@string/terminer"/>
+                android:text="@string/terminer"
+                android:onClick="terminerLocation"/>
 
         </LinearLayout>
 
