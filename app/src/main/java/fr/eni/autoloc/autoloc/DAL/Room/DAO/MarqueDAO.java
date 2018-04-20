@@ -14,14 +14,14 @@ import fr.eni.autoloc.autoloc.DAL.Room.Entity.MarqueEntity;
 
 @Dao
 public interface MarqueDAO {
-    @Query("SELECT * from client")
+    @Query("SELECT * from marque")
     public List<MarqueEntity> selectAll();
 
-    @Query("SELECT * FROM client WHERE id = :id")
+    @Query("SELECT * FROM marque WHERE id = :id")
     public MarqueEntity findById(int id);
 
     @Insert(onConflict = OnConflictStrategy.FAIL)
-    int insert(MarqueEntity marque);
+    long insert(MarqueEntity marque);
 
     @Update
     void update (MarqueEntity marque);

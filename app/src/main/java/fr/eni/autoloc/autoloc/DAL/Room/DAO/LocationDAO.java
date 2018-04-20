@@ -1,12 +1,13 @@
 package fr.eni.autoloc.autoloc.DAL.Room.DAO;
 
+import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Query;
 
 import java.util.List;
 
 
 import fr.eni.autoloc.autoloc.DAL.Room.Entity.LocationEntity;
-
+@Dao
 public interface LocationDAO extends GenericDAO<LocationEntity> {
     @Query("SELECT * FROM location")
     List<LocationEntity> selectAll();

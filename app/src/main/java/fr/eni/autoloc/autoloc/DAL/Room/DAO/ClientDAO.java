@@ -17,7 +17,7 @@ public interface ClientDAO {
     @Query("SELECT  * from client")
     List<ClientEntity> selectqAll();
 
-    @Query("SELECT * FROM   client WHERE id = :id")
+    @Query("SELECT * FROM   client WHERE personne_id = :id")
     ClientEntity findById(int id);
 
     @Insert

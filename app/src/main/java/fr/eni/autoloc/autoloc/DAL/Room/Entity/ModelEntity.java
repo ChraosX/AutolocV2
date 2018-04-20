@@ -3,6 +3,7 @@ package fr.eni.autoloc.autoloc.DAL.Room.Entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
 import fr.eni.autoloc.autoloc.BO.Img;
@@ -10,10 +11,11 @@ import fr.eni.autoloc.autoloc.BO.Marque;
 import fr.eni.autoloc.autoloc.BO.Model;
 import fr.eni.autoloc.autoloc.BO.TypeVehicule;
 
-@Entity(tableName = "moddel",primaryKeys = { "marque_id","type_id","id"},
+@Entity(tableName = "moddel",
         foreignKeys = { @ForeignKey(entity = ImgEntity.class , parentColumns = "id",childColumns = "img_id",onDelete = ForeignKey.SET_NULL,onUpdate = ForeignKey.CASCADE),
                         @ForeignKey(entity = MarqueEntity.class , parentColumns = "id",childColumns = "marque_id",onUpdate = ForeignKey.CASCADE,onDelete = ForeignKey.CASCADE),
-                        @ForeignKey(entity = TypeVehiculeEntity.class , parentColumns = "id",childColumns = "type_id",onDelete = ForeignKey.NO_ACTION,onUpdate = ForeignKey.CASCADE)})
+                        @ForeignKey(entity = TypeVehiculeEntity.class , parentColumns = "id",childColumns = "type_id",onDelete = ForeignKey.NO_ACTION,onUpdate = ForeignKey.CASCADE)},
+                        indices = @Index(value = {"marque_id","type_id","id"},unique = true))
 
 public class ModelEntity implements ParsableToBo<Model> {
     @PrimaryKey(autoGenerate = true)

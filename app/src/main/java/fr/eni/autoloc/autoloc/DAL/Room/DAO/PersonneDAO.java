@@ -14,21 +14,14 @@ import fr.eni.autoloc.autoloc.DAL.Room.Entity.PersonneEntity;
 
 @Dao
 
-public interface PersonneDAO extends DAO<PersonneEntity> {
+public interface PersonneDAO extends GenericDAO<PersonneEntity> {
     @Query("SELECT  * from personne")
     List<PersonneEntity> selectqAll();
 
     @Query("SELECT * FROM   personne WHERE id = :id")
     PersonneEntity findById(int id);
 
-    @Insert
-    void insert(PersonneEntity personne);
 
-    @Delete
-    void delete(PersonneEntity personne);
-
-    @Update
-    void update(PersonneEntity personne);
 
 
 }

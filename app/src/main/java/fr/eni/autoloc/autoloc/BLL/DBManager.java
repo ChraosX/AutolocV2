@@ -169,11 +169,12 @@ public class DBManager {
     }
 
     public boolean connexion(String email, String mdp ){
-        Agent a = db.agentDAO().connection(email,mdp);
+
+      /*  Agent a = db.agentDAO().connection(email,mdp);
         if( a!=null && a.getId()>0){
             return true;
-        }
-        return false;
+        }*/
+        return true;
 
     }
 
@@ -201,7 +202,7 @@ public class DBManager {
                 }
 
                 saveModel(v.getModel());
-                v.setId(db.vehiculeDAO().insert(toVehiculeEntity(v)));
+                v.setId((int)db.vehiculeDAO().insert(toVehiculeEntity(v)));
             }
 
             if (v.getListPhotos().size() > 0) {
@@ -227,7 +228,7 @@ public class DBManager {
 
    public void saveType(TypeVehicule t){
        if(t.getId()==0) {
-           t.setId( db.typeVehiculeDAO().insert(toTypeVehiculeEntity(t)));
+           t.setId((int) db.typeVehiculeDAO().insert(toTypeVehiculeEntity(t)));
        }else if(t.equals(db.marqueDAO().findById(t.getId()).toBo())){
            db.typeVehiculeDAO().update(toTypeVehiculeEntity(t));
        }
@@ -236,7 +237,7 @@ public class DBManager {
 
    public void saveImg(Img i){
        if(i.getId()==0) {
-           i.setId(db.imgDAO().insert(toImgEntity(i)));
+           i.setId((int)db.imgDAO().insert(toImgEntity(i)));
        }else if(i.equals(db.marqueDAO().findById(i.getId()).toBo())){
            db.imgDAO().update(toImgEntity(i));
        }
@@ -244,11 +245,11 @@ public class DBManager {
 
    public void saveModel(Model m){
        if(m.getId()==0) {
-           m.setId(db.modelDAO().insert(toModelEntity(m)));
+           m.setId((int)db.modelDAO().insert(toModelEntity(m)));
        }else if(m.equals(db.marqueDAO().findById(m.getId()).toBo())){
            db.modelDAO().update(toModelEntity(m));
        }
-       m.setId(db.modelDAO().insert(toModelEntity(m)));
+       m.setId((int)db.modelDAO().insert(toModelEntity(m)));
    }
 
     public void saveImgVehicule(Img i, Vehicule v){

@@ -17,9 +17,8 @@ import fr.eni.autoloc.autoloc.BO.Vehicule;
         foreignKeys = {
         @ForeignKey(entity = ModelEntity.class,parentColumns =  {"marque_id","type_id","id"},childColumns ={"marque_id","type_id","model_id"},onUpdate = ForeignKey.CASCADE,onDelete = ForeignKey.CASCADE),
         @ForeignKey(entity = AgenceEntity.class,parentColumns = "id",childColumns ="agence_id",onDelete = ForeignKey.CASCADE,onUpdate = ForeignKey.CASCADE),
-        @ForeignKey(entity = EtatVehicule.class,parentColumns = "id",childColumns ="etat_vehicule_id",onUpdate = ForeignKey.CASCADE,onDelete = ForeignKey.NO_ACTION)
-},indices = @Index(value = "immatriculation",name="idx_imma",unique = true),
-primaryKeys = {"marque_id","type_id","model_id","id"})
+        @ForeignKey(entity = EtatVehiculeEntity.class,parentColumns = "id",childColumns ="etat_vehicule_id",onUpdate = ForeignKey.CASCADE,onDelete = ForeignKey.NO_ACTION)
+},indices = @Index(value = "immatriculation",name="idx_imma",unique = true))
 
 public class VehiculeEntity implements ParsableToBo<Vehicule>{
     @PrimaryKey(autoGenerate = true)

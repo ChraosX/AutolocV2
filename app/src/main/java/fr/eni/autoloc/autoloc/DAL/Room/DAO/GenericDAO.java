@@ -13,7 +13,7 @@ public interface GenericDAO<T> {
 
 
     @Insert(onConflict = OnConflictStrategy.FAIL)
-    int insert( T entity );
+    long insert( T entity );
     @Delete
     void delete( T entity );
     @Update

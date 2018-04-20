@@ -1,8 +1,14 @@
 package fr.eni.autoloc.autoloc.BO;
 
+import android.arch.persistence.room.Ignore;
+
 public class Agent extends Personne{
+    @Ignore
     private Agence agence;
     private String passwd;
+
+    public Agent() {
+    }
 
     public Agent(Agence a) {
         this.agence = a;

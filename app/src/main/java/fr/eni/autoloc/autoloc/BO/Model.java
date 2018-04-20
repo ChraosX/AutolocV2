@@ -1,10 +1,15 @@
 package fr.eni.autoloc.autoloc.BO;
 
+import android.arch.persistence.room.Ignore;
+
 public class Model {
     private int id;
+    @Ignore
     private Marque marque;
+    @Ignore
     private TypeVehicule type;
     private String nom;
+    @Ignore
     private Img img;
 
     public Model() {

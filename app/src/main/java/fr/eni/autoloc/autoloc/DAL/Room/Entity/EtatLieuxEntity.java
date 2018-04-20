@@ -3,6 +3,7 @@ package fr.eni.autoloc.autoloc.DAL.Room.Entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
 import fr.eni.autoloc.autoloc.BO.EtatLieux;
@@ -16,7 +17,7 @@ import fr.eni.autoloc.autoloc.BO.Location;
         @ForeignKey(entity = EtatVehiculeEntity.class,parentColumns = "id",childColumns = "etat_fin_id"),
         @ForeignKey(entity = LocationEntity.class,parentColumns = "id",childColumns = "location_id",onDelete = ForeignKey.CASCADE,onUpdate = ForeignKey.CASCADE)
 
-},primaryKeys = {"location_id","id"})
+},indices = @Index(value = {"location_id","id"},name = "idx_pk_el",unique = true))
 
 public class EtatLieuxEntity implements ParsableToBo<EtatLieux>{
     @PrimaryKey(autoGenerate = true)
