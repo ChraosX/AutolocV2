@@ -15,10 +15,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="4dp"
-        app:cardElevation="4dp"
-        android:background="@color/transparent">
+        app:cardElevation="4dp">
 
         <LinearLayout
+            android:id="@+id/linear_layout_card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">

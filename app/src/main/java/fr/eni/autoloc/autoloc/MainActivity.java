@@ -50,10 +50,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // Récupérer la liste des agences
         List<Agence> agenceList = dbManager.getAllAgence();
 
-
         // Remplir le spinner des agences
         Spinner spinner = findViewById(R.id.spinner_agence);
-        //TODO Inserer la liste esous forme de table de charSequence
         ArrayAdapter<Agence> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, agenceList);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -77,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         agentId = sharedPreferences.getString(Constante.AGENT_ID, "");
         agentMdp = sharedPreferences.getString(Constante.AGENT_MDP, "");
-        agence.setId(sharedPreferences.getInt(Constante.AGENCE_ID, -1));
+        agence.setId(sharedPreferences.getInt(Constante.AGENCE_ID, 0));
         agence.setNom(sharedPreferences.getString(Constante.AGENCE_NOM, ""));
     }
 

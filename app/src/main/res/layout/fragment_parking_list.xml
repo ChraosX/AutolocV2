@@ -12,4 +12,4 @@
     app:layoutManager="LinearLayoutManager"
     tools:context=".activity.fragment.ParkingFragment"
     tools:listitem="@layout/fragment_parking"
-    android:background="@color/colorBackground"/>
+    android:background="@color/colorPrimary"/>
